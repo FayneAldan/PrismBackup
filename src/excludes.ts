@@ -16,7 +16,6 @@ async function ifContainsExclude(contains: string, excludes: string[]) {
 
 // Launcher directories
 await ifContainsExclude("libraries", [
-  "**/.*",
   "assets",
   "backup", // In case the repo is cloned to the launcher folder
   "cache",
@@ -35,12 +34,12 @@ await ifContainsExclude("libraries", [
 
 // Minecraft intances
 add(
-  "**/.*",
   "backups",
   "crash-reports",
   "logs",
   "screenshots",
-  "server-resource-packs"
+  "server-resource-packs",
+  "replay_videos" // ReplayMod
 );
 
 export async function getExcludeFile(): Promise<string> {
