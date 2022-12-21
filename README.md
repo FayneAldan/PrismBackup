@@ -42,7 +42,7 @@ Please see [excludes.ts] for more details.
 ## PolyMC?
 
 No. Use [Prism Launcher] instead:\
-https://prismlauncher.org/wiki/overview/faq/#what-happened-to-polymc-why-is-there-a-new-fork
+<https://prismlauncher.org/wiki/overview/faq/#what-happened-to-polymc-why-is-there-a-new-fork>
 
 [prism launcher]: https://prismlauncher.org/
 [multimc]: https://multimc.org/
