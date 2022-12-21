@@ -1,4 +1,4 @@
-import { join } from "std/path/mod.ts";
+import { join } from "https://deno.land/std@0.170.0/path/mod.ts";
 import { backupPaths } from "./dirs.ts";
 import doRestic from "./doRestic.ts";
 import { getEnv } from "./env.ts";

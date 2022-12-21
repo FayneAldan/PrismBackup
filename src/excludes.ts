@@ -1,6 +1,6 @@
 import { backupPaths } from "./dirs.ts";
 import { exists } from "./exists.ts";
-import { join } from "std/path/mod.ts";
+import { join } from "https://deno.land/std@0.170.0/path/mod.ts";
 
 const excludes: string[] = [];
 

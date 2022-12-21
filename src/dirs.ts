@@ -1,5 +1,5 @@
 import { getEnv, needEnv } from "./env.ts";
-import { join, resolve } from "std/path/mod.ts";
+import { join, resolve } from "https://deno.land/std@0.170.0/path/mod.ts";
 import { exists } from "./exists.ts";
 
 const { os } = Deno.build;

@@ -1,6 +1,6 @@
-import { load } from "std/dotenv/mod.ts";
-import { findUp } from "find-up";
-import { join, basename } from "std/path/mod.ts";
+import { load } from "https://deno.land/std@0.170.0/dotenv/mod.ts";
+import { findUp } from "https://deno.land/x/find_up_deno@0.1.2/mod.ts";
+import { join, basename } from "https://deno.land/std@0.170.0/path/mod.ts";
 
 let envPath = (await findUp(".env")) || (await findUp("backup"));
 if (!envPath) throw new Error("Could not find .env");
