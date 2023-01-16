@@ -42,6 +42,9 @@ add(
   "replay_videos" // ReplayMod
 );
 
+// Prism Launcher stuff
+add(".LAUNCHER_TEMP", "_LAUNCHER_TEMP", "_MMC_TEMP");
+
 export async function getExcludeFile(): Promise<string> {
   const path = await Deno.makeTempFile({
     prefix: "exclude",
