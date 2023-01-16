@@ -45,8 +45,6 @@ if (os == "windows") {
 backupPaths = backupPaths.map((v) => resolve(v));
 backupPaths = [...new Set(backupPaths)];
 
-console.log("CWD", Deno.cwd());
-
 if (import.meta.main) {
   console.log(backupPaths);
   alert();
