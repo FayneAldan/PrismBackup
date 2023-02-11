@@ -16,8 +16,8 @@ You may have to manually specify game directories in `.env`
 - Create a [Restic] repository wherever you desire
 - Open a terminal into your Prism Launcher data folder (typically `%AppData%\PrismLauncher`)
 - ```
-  deno compile -A https://FayneAldan.github.io/PrismBackup/src/backup.ts
-  deno compile -A https://FayneAldan.github.io/PrismBackup/src/doRestic.ts
+  deno compile -A https://RuiNtD.github.io/PrismBackup/src/backup.ts
+  deno compile -A https://RuiNtD.github.io/PrismBackup/src/doRestic.ts
   ```
   This will create `backup.exe` and `doRestic.exe`
 - Create a `.env` file next to `backup.exe`, using [.env.example] as a template
