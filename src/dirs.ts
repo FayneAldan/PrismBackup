@@ -24,14 +24,12 @@ tryEnv("MINECRAFT_DIR");
 tryEnv("MULTIMC_DIR");
 tryEnv("PRISM_DIR");
 
-await tryPath(resolve("."), "instances");
-await tryPath(resolve("."), "libraries");
-await tryPath(resolve("."), "saves");
-
-// In case the repo is cloned to the launcher folder
-await tryPath(resolve(".."), "instances");
-await tryPath(resolve(".."), "libraries");
-await tryPath(resolve(".."), "saves");
+for (const parent of [".", ".."]) {
+  const dir = resolve(parent);
+  await tryPath(dir, "instances");
+  await tryPath(dir, "libraries");
+  await tryPath(dir, "saves");
+}
 
 if (os == "windows") {
   const appData = needEnv("APPDATA");
