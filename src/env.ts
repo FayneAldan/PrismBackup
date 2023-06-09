@@ -1,12 +1,13 @@
 import { dotenv, log } from "./deps.ts";
-import { findUp } from "npm:find-up@6.3.0";
+import { findUpMultiple } from "npm:find-up@6.3.0";
 
-const envPath = await findUp([".env", "backup/.env"]);
-if (envPath)
-  await dotenv.load({
-    envPath,
-    export: true,
-  });
+const envPaths = await findUpMultiple([".env", "backup/.env"]);
+if (envPaths.length > 0)
+  for (const envPath of envPaths)
+    await dotenv.load({
+      envPath,
+      export: true,
+    });
 else log.warning("Could not find .env");
 
 export function getEnv(key: string): string | undefined {
