@@ -1,6 +1,5 @@
-import { backupPaths } from "./dirs.ts";
-import { exists } from "./exists.ts";
-import { join } from "https://deno.land/std@0.170.0/path/mod.ts";
+import { fs, path } from "./deps.ts";
+import { backupDirs } from "./dirs.ts";
 
 const excludes: string[] = [];
 
@@ -9,9 +8,9 @@ function add(...paths: string[]) {
 }
 
 async function ifContainsExclude(contains: string, excludes: string[]) {
-  for (const backupPath of backupPaths)
-    if (await exists(join(backupPath, contains)))
-      for (const exclude of excludes) add(join(backupPath, exclude));
+  for (const backupPath of backupDirs)
+    if (await fs.exists(path.join(backupPath, contains)))
+      for (const exclude of excludes) add(path.join(backupPath, exclude));
 }
 
 // Launcher directories

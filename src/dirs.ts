@@ -1,23 +1,22 @@
+import { fs, path } from "./deps.ts";
 import { getEnv, needEnv } from "./env.ts";
-import { join, resolve } from "https://deno.land/std@0.170.0/path/mod.ts";
-import { exists } from "./exists.ts";
 
 const { os } = Deno.build;
 
-export let backupPaths: string[] = [];
+export let backupDirs: string[] = [];
 
 function tryEnv(key: string) {
   const value = getEnv(key);
   if (value) add(value);
 }
 
-function add(path: string) {
-  backupPaths.push(path);
+function add(dir: string) {
+  backupDirs.push(dir);
 }
 
-async function tryPath(path: string, file?: string) {
-  const tryPath = file ? join(path, file) : path;
-  if (await exists(tryPath)) add(path);
+async function tryDir(dir: string, file?: string) {
+  const tryPath = file ? path.join(dir, file) : dir;
+  if (await fs.exists(tryPath)) add(dir);
 }
 
 tryEnv("MINECRAFT_DIR");
@@ -25,25 +24,25 @@ tryEnv("MULTIMC_DIR");
 tryEnv("PRISM_DIR");
 
 for (const parent of [".", ".."]) {
-  const dir = resolve(parent);
-  await tryPath(dir, "instances");
-  await tryPath(dir, "libraries");
-  await tryPath(dir, "saves");
+  const dir = path.resolve(parent);
+  await tryDir(dir, "instances");
+  await tryDir(dir, "libraries");
+  await tryDir(dir, "saves");
 }
 
 if (os == "windows") {
   const appData = needEnv("APPDATA");
 
-  await tryPath(join(appData, ".minecraft"));
-  await tryPath(join(appData, "PrismLauncher"));
+  await tryDir(path.join(appData, ".minecraft"));
+  await tryDir(path.join(appData, "PrismLauncher"));
 }
 
 // TODO: Mac and Linux support
 
-backupPaths = backupPaths.map((v) => resolve(v));
-backupPaths = [...new Set(backupPaths)];
+backupDirs = backupDirs.map((v) => path.resolve(v));
+backupDirs = [...new Set(backupDirs)];
 
 if (import.meta.main) {
-  console.log(backupPaths);
+  console.log(backupDirs);
   alert();
 }

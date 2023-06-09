@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "udd": "deno run -r --allow-read=. --allow-write=. --allow-net https://deno.land/x/udd/main.ts src/*.ts"
+  }
+}
