@@ -27,7 +27,7 @@ if (INST_NAME == "SkyClient") await findFile("skyclient");
 
 if (INST_DIR) args.push(INST_DIR);
 else if (backupDirs.length == 0)
-  throw new Error("Failed to find any folders to backup");
+  throw new Error("Failed to find any folders to backup!");
 else {
   addTag("manual");
   args.push(...backupDirs);
