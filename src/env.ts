@@ -6,7 +6,6 @@ if (envPath)
   await dotenv.load({
     envPath,
     export: true,
-    examplePath: null,
   });
 else log.warning("Could not find .env");
 
