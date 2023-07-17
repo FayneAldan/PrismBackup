@@ -1,3 +1,5 @@
+#!/usr/bin/env -S deno run -A
+
 import "./env.ts";
 
 export default async function doRestic(args: string[]) {

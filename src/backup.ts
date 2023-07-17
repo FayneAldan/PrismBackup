@@ -1,3 +1,5 @@
+#!/usr/bin/env -S deno run -A
+
 import { fs, path } from "./deps.ts";
 import { backupDirs } from "./dirs.ts";
 import doRestic from "./doRestic.ts";
