@@ -10,7 +10,7 @@ function add(...paths: string[]) {
 async function ifContainsExclude(contains: string, excludes: string[]) {
   for (const backupPath of backupDirs)
     if (await fs.exists(path.join(backupPath, contains)))
-      for (const exclude of excludes) add(path.join(backupPath, exclude));
+      add(...excludes.map((v) => path.join(backupPath, v)));
 }
 
 // Launcher directories
@@ -25,21 +25,10 @@ await ifContainsExclude("libraries", [
   "versions",
   "webcache2",
   "metacache",
-  "*.log",
   "*_log.txt",
   "backup.exe",
   "doRestic.exe",
 ]);
-
-// Minecraft intances
-add(
-  "backups",
-  "crash-reports",
-  "logs",
-  "screenshots",
-  "server-resource-packs",
-  "replay_videos" // ReplayMod
-);
 
 // Prism Launcher stuff
 add(".LAUNCHER_TEMP", "_LAUNCHER_TEMP", "_MMC_TEMP");
