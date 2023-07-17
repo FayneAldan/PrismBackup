@@ -3,41 +3,48 @@
 This script makes it easy to automatically backup your [Prism Launcher] (or [MultiMC]) data using [Restic].
 You can also run the program by itself to do a manual backup, which will also include vanilla launcher data.
 
-**This script is untested on Mac and Linux.**\
-You may have to manually specify game directories in `.env`
+**This script is designed for Windows.**\
+MacOS and Linux users will have to manually specify game directories in `.env`
 
 ## Requirements
 
 - [Deno]
 - [Restic]
 
-## Installation
+## Easy Installation
 
 - Create a [Restic] repository wherever you desire
-- Open a terminal into your Prism Launcher data folder (typically `%AppData%\PrismLauncher`)
+- Open Prism Launcher, click Folders at the top, then View Launcher Root Folder
+- Create a `.env` file in this folder, using [.env.example] as a template
+- Go back to Prism Launcher and go to Settings
+- Go to the Custom Commands tab
+- Next to "Post-exit command", type in: `deno run -Ar https://RuiNtD.github.io/PrismBackup/src/backup.ts`
+
+## Advanced Installation
+
+- Create a [Restic] repository wherever you desire
+- Open Prism Launcher, click Folders at the top, then View Launcher Root Folder
+- Open a terminal in this folder
 - ```
   deno compile -Ar https://RuiNtD.github.io/PrismBackup/src/backup.ts
   deno compile -Ar https://RuiNtD.github.io/PrismBackup/src/doRestic.ts
   ```
   This will create `backup.exe` and `doRestic.exe`
 - Create a `.env` file next to `backup.exe`, using [.env.example] as a template
-- Open Prism Launcher and go to Settings
+- Go back to Prism Launcher and go to Settings
 - Go to the Custom Commands tab
 - Next to "Post-exit command", type in: `backup`
 
 ## Usage
 
-If you followed the steps under Installation, when you close an instance, that instance will be backed up.
-You can also manually run `backup.exe` to backup all your Prism Launcher and vanilla launcher data
-and you can use `doRestic.exe` in your terminal to access `restic` with `.env` in environment.
+When you close an instance, that instance should be automatically backed up.
 
 Because of the nature of Restic, unchanged files between each snapshot will only be stored once,
 saving disk space over the course of several backups.
 
-Also, the backup program creates and uses an "exclude file" to save space.
-Namely, folders that can be easily redownloaded by Minecraft will be excluded, including `assets` and `libraries`.
-However, do note that **world backups, logs, and screenshots _will not_ be backed up** to save disk space.
-Please see [excludes.ts] for more details.
+If you followed the **Advanced** Installation instructions,
+you can also manually run `backup.exe` to backup all your Prism Launcher and vanilla launcher data
+or use `doRestic.exe` in your terminal to access `restic` with `.env` in environment.
 
 ## PolyMC?
 
