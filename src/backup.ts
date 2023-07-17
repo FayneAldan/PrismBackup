@@ -37,7 +37,7 @@ else {
 
 args.push(...Deno.args);
 
-console.log("> restic", ...args);
+console.log("> restic", ...args.map((v) => (v.includes(" ") ? `"${v}"` : v)));
 const code = await doRestic(args);
 await Deno.remove(excludeFile);
 Deno.exit(code);
