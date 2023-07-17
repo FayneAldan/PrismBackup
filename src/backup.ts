@@ -38,5 +38,6 @@ else {
 args.push(...Deno.args);
 
 console.log("> restic", ...args);
-await doRestic(args);
+const code = await doRestic(args);
 await Deno.remove(excludeFile);
+Deno.exit(code);
