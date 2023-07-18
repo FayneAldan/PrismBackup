@@ -25,8 +25,9 @@ await ifContainsExclude("libraries", [
   "webcache2",
   "metacache",
   "*_log.txt",
-  "backup.exe",
-  "doRestic.exe",
+  ".env",
+  "backup.ps1",
+  "doRestic.ps1",
 ]);
 
 // Prism Launcher stuff
