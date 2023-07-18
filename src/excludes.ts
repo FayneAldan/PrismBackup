@@ -16,7 +16,6 @@ async function ifContainsExclude(contains: string, excludes: string[]) {
 // Launcher directories
 await ifContainsExclude("libraries", [
   "assets",
-  "backup", // In case the repo is cloned to the launcher folder
   "cache",
   "libraries",
   "logos",
