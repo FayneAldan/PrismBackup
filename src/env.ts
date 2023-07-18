@@ -22,3 +22,9 @@ export function needEnv(key: string): string {
 
 //console.log("CWD", Deno.cwd());
 //needEnv("RESTIC_REPOSITORY");
+
+if (import.meta.main) {
+  console.log(Deno.env.toObject());
+  console.log(envPaths);
+  alert();
+}
