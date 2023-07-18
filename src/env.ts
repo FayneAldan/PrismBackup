@@ -1,14 +1,13 @@
 import { dotenv, log } from "./deps.ts";
 import { findUpMultiple } from "npm:find-up@6.3.0";
 
-const envPaths = await findUpMultiple([".env", "backup/.env"]);
-if (envPaths.length > 0)
-  for (const envPath of envPaths)
-    await dotenv.load({
-      envPath,
-      export: true,
-    });
-else log.warning("Could not find .env");
+const envPaths = await findUpMultiple(".env");
+if (envPaths.length == 0) log.warning("Could not find .env");
+for (const envPath of envPaths)
+  await dotenv.load({
+    envPath,
+    export: true,
+  });
 
 export function getEnv(key: string): string | undefined {
   return Deno.env.get(key);
