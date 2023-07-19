@@ -22,6 +22,16 @@ MacOS and Linux users will have to manually specify game directories in `.env`
 - Go to the Custom Commands tab
 - Next to "Post-exit command", type in: `pwsh ../../../backup.ps1`
 
+### More backups?
+
+If you want more backups, you can instead set
+your pre-launch and post-exit launch commands to:
+
+```
+pwsh ../../../backup.ps1 --tag launch
+pwsh ../../../backup.ps1 --tag exit
+```
+
 ## Usage
 
 When you close an instance, that instance should be automatically backed up.
