@@ -1,8 +1,11 @@
-import { dotenv, log } from "./deps.ts";
+//import $ from "https://deno.land/x/dax@0.35.0/mod.ts";
+import * as dotenv from "https://deno.land/std@0.203.0/dotenv/mod.ts";
+import { $ } from "./utils.ts";
+
 import { findUpMultiple } from "npm:find-up@6.3.0";
 
 const envPaths = await findUpMultiple(".env");
-if (envPaths.length == 0) log.warning("Could not find .env");
+if (envPaths.length == 0) $.logWarn("WARN Could not find .env");
 for (const envPath of envPaths)
   await dotenv.load({
     envPath,

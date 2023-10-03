@@ -1,6 +1,8 @@
 #!/usr/bin/env -S deno run -A
 
-import { fs, path } from "./deps.ts";
+import * as fs from "https://deno.land/std@0.203.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.203.0/path/mod.ts";
+
 import { backupDirs } from "./dirs.ts";
 import doRestic from "./doRestic.ts";
 import { getEnv } from "./env.ts";
@@ -37,7 +39,6 @@ else {
 
 args.push(...Deno.args);
 
-console.log("> restic", ...args.map((v) => (v.includes(" ") ? `"${v}"` : v)));
-const code = await doRestic(args);
+const code = await doRestic(args, true);
 await Deno.remove(excludeFile);
 Deno.exit(code);

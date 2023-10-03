@@ -1,4 +1,6 @@
-import { fs, path } from "./deps.ts";
+import * as fs from "https://deno.land/std@0.203.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.203.0/path/mod.ts";
+
 import { getEnv, needEnv } from "./env.ts";
 
 const { os } = Deno.build;
