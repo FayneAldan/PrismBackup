@@ -38,8 +38,16 @@ add(".LAUNCHER_TEMP", "_LAUNCHER_TEMP", "_MMC_TEMP");
 export async function getExcludeFile(): Promise<string> {
   const path = await Deno.makeTempFile({
     prefix: "exclude",
+    suffix: ".txt",
   });
   await Deno.writeTextFile(path, excludes.join("\n"));
+  globalThis.addEventListener("unload", () => {
+    Deno.removeSync(path);
+  });
+  globalThis.addEventListener("unhandledrejection", () => {
+    Deno.removeSync(path);
+  });
+
   return path;
 }
 

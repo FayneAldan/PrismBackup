@@ -39,6 +39,4 @@ else {
 
 args.push(...Deno.args);
 
-const code = await doRestic(args, true);
-await Deno.remove(excludeFile);
-Deno.exit(code);
+Deno.exit(await doRestic(args, true));
