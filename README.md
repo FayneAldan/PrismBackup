@@ -20,17 +20,8 @@ MacOS and Linux users will have to manually specify game directories in `.env`
 - Download [backup.ps1] and [doRestic.ps1] to this folder
 - Go back to Prism Launcher and go to Settings
 - Go to the Custom Commands tab
-- Next to "Post-exit command", type in: `pwsh ../../../backup.ps1`
-
-### More backups?
-
-If you want more backups, you can instead set
-your pre-launch and post-exit launch commands to:
-
-```
-pwsh ../../../backup.ps1 --tag launch
-pwsh ../../../backup.ps1 --tag exit
-```
+- Next to "Pre-launch command", type in: `pwsh ../../../backup.ps1 --tag launch`
+- Next to "Post-exit command", type in: `pwsh ../../../backup.ps1 --tag exit`
 
 ## Usage
 
@@ -41,11 +32,6 @@ saving disk space over the course of several backups.
 
 You can also manually run `backup.ps1` to backup all your Prism Launcher and vanilla launcher data
 or use `./doRestic.ps1` in your terminal to access `restic` with `.env` in environment.
-
-## PolyMC?
-
-No. Use [Prism Launcher] instead:\
-<https://prismlauncher.org/wiki/overview/faq/#what-happened-to-polymc-why-is-there-a-new-fork>
 
 [prism launcher]: https://prismlauncher.org/
 [multimc]: https://multimc.org/
