@@ -1,3 +1,15 @@
+I have decided to discontinue this project in favor of [resticprofile].
+[Here is my profile.][config] Feel free to modify it to your needs.
+
+Here are my settings in Prism Launcher: \
+Pre-launch command: `resticprofile mc.backup --tag "$INST_NAME" --tag launch` \
+Post-exit command: `resticprofile mc.backup --tag "$INST_NAME" --tag exit`
+
+[resticprofile]: https://creativeprojects.github.io/resticprofile/
+[config]: https://gist.github.com/RuiNtD/7c006eb03928776695bf5e49c98b673c
+
+---
+
 # Prism Launcher Backup
 
 This script makes it easy to automatically backup your [Prism Launcher] (or [MultiMC]) data using [Restic].
